@@ -1,0 +1,13 @@
+.meal-img {
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.meal-detail-scroller {
+    height: calc(100dvh - 5rem);
+    overflow-y: auto;
+}

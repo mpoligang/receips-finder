@@ -1,0 +1,54 @@
+<div class="page-container p-3">
+  <app-title-with-back-navigation
+    [title]="data().title"
+    (backNavigation)="backToList()"
+  >
+  </app-title-with-back-navigation>
+  <div class="meal-detail-scroller">
+    <div class="flex">
+      <div class="col">
+        <app-meal-item
+          (setFavorite)="confirmHandleFavorite()"
+          [image]="data().thumbs.large"
+          [favorite]="data().favorite"
+          [preparationTime]="data().estimatedTime"
+          height="300px"
+        />
+      </div>
+    </div>
+    <div class="flex">
+      <div class="col justify-content-center flex">
+        <div class="col-fixed">
+          <p-button
+            (onClick)="selectedTab.set(tabs.INGREDIENTS)"
+            [variant]="selectedTab() !== tabs.INGREDIENTS ? 'text' : undefined"
+            label="Ingredients"
+          ></p-button>
+        </div>
+        <div class="col-fixed">
+          <p-button
+            (onClick)="selectedTab.set(tabs.PREPARATION)"
+            label="Preparation"
+            [variant]="selectedTab() !== tabs.PREPARATION ? 'text' : undefined"
+          ></p-button>
+        </div>
+      </div>
+    </div>
+    <div [class.hidden]="selectedTab() !== tabs.INGREDIENTS">
+      <div class="flex flex-column">
+        @for (item of data().ingredients; track $index) {
+        <app-ingredient-item [item]="item" />
+        }
+      </div>
+    </div>
+    <div [class.hidden]="selectedTab() !== tabs.PREPARATION">
+      <div class="flex flex-column">
+        @for (item of data().preparation; track $index) {
+        <app-preparation-item [item]="item" />
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-confirmdialog />

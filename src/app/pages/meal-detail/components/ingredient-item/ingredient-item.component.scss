@@ -1,0 +1,21 @@
+.ingredient-item {
+    display: flex;
+    align-items: center;
+    background: var(--p-surface-200);
+    margin: 10px 0px;
+    border-radius: 10px;
+
+    .ingredient-image-container {
+        padding: 0.5rem;
+        background: var(--p-surface-0);
+        border-radius: 10px;
+        height: 70px;
+        width: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .pi-spinner {
+            color: var(--p-primary-500);
+        }
+    }
+}

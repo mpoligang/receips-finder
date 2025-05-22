@@ -1,0 +1,47 @@
+<div class="flex flex-column">
+  <app-title-with-back-navigation
+    title="Search Receips"
+    (backNavigation)="handleBackToLanding()"
+  />
+  <div class="flex align-items-center">
+    <div class="col pl-0">
+      <p-iconfield>
+        <p-inputicon styleClass="pi pi-search" />
+        <input
+          type="text"
+          pInputText
+          placeholder="Search"
+          class="w-full"
+          id="search"
+          name="search"
+          [(ngModel)]="term"
+          (input)="handleSearch()"
+        />
+        @if(isLoading()){
+        <p-inputicon styleClass="pi pi-spinner pi-spin" />
+        } @if(term().length > 0 && !isLoading()){
+        <p-button
+          (onClick)="handleClear()"
+          size="small"
+          icon="pi pi-times"
+          variant="text"
+          class="clear-button"
+        ></p-button>
+        }
+      </p-iconfield>
+    </div>
+    <div class="col-fixed px-0">
+      <p-button icon="pi pi-filter" variant="text" [raised]="true"></p-button>
+    </div>
+  </div>
+  <div class="flex align-items-center mt-1">
+    <div class="col px-0">
+      <h4 class="m-0">Search Result</h4>
+    </div>
+    @if(results()){
+    <div class="col-fixed">
+      <span class="search-results"> {{ results() }} results </span>
+    </div>
+    }
+  </div>
+</div>

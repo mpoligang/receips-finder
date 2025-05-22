@@ -1,0 +1,21 @@
+<div class="ingredient-item">
+  <div class="col-fixed">
+    <div class="ingredient-image-container">
+      @if(imageLoaded()){
+      <img [src]="item().thumbs.small" [height]="55" [width]="55" />
+      } @else {
+      <i class="pi pi-spin pi-spinner"></i>
+      }
+    </div>
+  </div>
+  <div class="flex flex-wrap align-items-center w-full">
+    <div class="col py-0">
+      <h4 class="m-0">{{ item().ingredient }}</h4>
+    </div>
+    <div class="py-0 pr-4 sm:col-fixed col-12">
+      <span>
+        {{ item().measure }}
+      </span>
+    </div>
+  </div>
+</div>

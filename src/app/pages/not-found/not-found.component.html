@@ -1,0 +1,23 @@
+<div class="landing-container">
+  <div class="flex flex-column">
+    <div class="flex">
+      <div class="col landing-logo-container mt-4">
+        <img
+          src="./cook_hat.png"
+          alt="Recipes Finder Logo"
+          height="80"
+          width="80"
+        />
+      </div>
+    </div>
+    <h1>404</h1>
+    <p class="px-6">{{ message() }}</p>
+    <p-button
+      [label]="navigationLabel()"
+      icon="pi pi-arrow-left"
+      iconPos="left"
+      styleClass="px-6 py-3 mt-5"
+      (onClick)="backNavigation()"
+    />
+  </div>
+</div>

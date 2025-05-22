@@ -1,0 +1,39 @@
+<div class="page-container p-3">
+  <app-meals-search-bar
+    (searchAction)="handleSearch($event)"
+    [isLoading]="isLoading()"
+    [results]="mealList().result"
+  />
+  <div class="meals-list-container-scroller mt-2">
+    <div class="flex flex-wrap">
+      @for (item of mealList().data; track $index) {
+      <div class="md:col-4 sm:col-6 col-12 pl-0">
+        <app-meal-item
+          height="200px"
+          [title]="item.title"
+          [favorite]="item.favorite"
+          [image]="item.thumbs.medium"
+          [preparationTime]="item.estimatedTime"
+          (clickItem)="goToDetail(item.id)"
+          (setFavorite)="confirmHandleFavorite(item)"
+        />
+      </div>
+      }
+    </div>
+    @if(!mealList().result && !isLoading()){
+    <app-result-not-found />
+    } @if(isLoading()){
+    <div class="flex flex-wrap">
+      @for (item of skeletonData(); track $index) {
+      <div class="md:col-4 sm:col-6 col-12">
+        <div class="self-center" style="flex: 1">
+          <p-skeleton height="200px" width="100%"></p-skeleton>
+        </div>
+      </div>
+      }
+    </div>
+    }
+  </div>
+</div>
+
+<p-confirmdialog />

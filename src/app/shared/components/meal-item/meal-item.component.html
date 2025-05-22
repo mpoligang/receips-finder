@@ -1,0 +1,36 @@
+<div
+  (click)="clickItem.emit()"
+  class="meal-item"
+  [class.is-loading-or-error]="imageOnError() || !imageLoaded()"
+  [style]="{ 'background-image': 'url(' + image() + ')', height: height() }"
+>
+  @if(imageLoaded()){
+  <div class="flex align-items-center justify-content-between">
+    <div class="col p-3">
+      <p-tag
+        icon="pi pi-clock"
+        size="small"
+        severity="secondary"
+        [value]="preparationTime() ?? 'Not avaiable'"
+      ></p-tag>
+    </div>
+    <div class="col-fixed p-3">
+      <p-button
+        severity="secondary"
+        [raised]="true"
+        [style]="{ color: 'var(--p-primary-500)' }"
+        [icon]="favorite() ? 'pi pi-star-fill' : 'pi pi-star'"
+        (onClick)="handleFavorite($event)"
+      ></p-button>
+    </div>
+  </div>
+  <div class="p-3 h-full flex align-items-end">
+    <span class="meal-item-title">{{ title() }}</span>
+  </div>
+  } @else {
+  <i class="pi pi-spin pi-spinner"> </i>
+  } @if(imageOnError()){
+  <i class="pi pi-times"> </i>
+  <p>Error to load current image</p>
+  }
+</div>

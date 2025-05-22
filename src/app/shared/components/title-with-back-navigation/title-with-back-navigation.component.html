@@ -1,0 +1,14 @@
+<div class="flex align-items-center">
+  <div class="col-fixed pl-0">
+    <p-button
+      [raised]="true"
+      icon="pi pi-arrow-left"
+      variant="text"
+      (onClick)="backNavigation.emit()"
+    ></p-button>
+  </div>
+  <div class="col-fixed">
+    <h3 class="m-0 meal-title">{{ title() }}</h3>
+  </div>
+  <ng-content />
+</div>
